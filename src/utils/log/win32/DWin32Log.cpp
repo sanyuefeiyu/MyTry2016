@@ -1,40 +1,54 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include "windows.h"
-#include "../DLog.h"
+#include "DLogCommon.h"
+#include "DLog.h"
 
-#define LOG_BUF_SIZE	2048
+#define LOG_FILE_FULL_NAME  "D:\\DLog.txt"
 
-static const char *levelStr[3] = { "Debug", "Warn", "Error" };
-
-static void Output(DLogLevel level, const char *tag, const char *buf)
+extern "C" void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, const char *buf)
 {
-	char outputBuf[LOG_BUF_SIZE];
+    char outputBuf[LOG_BUF_SIZE + 256];
 
-	//get date time
-	SYSTEMTIME	lt;
-	GetLocalTime(&lt);
+    //get date time
+    SYSTEMTIME  lt;
+    GetLocalTime(&lt);
 
-	//date time pid threadid level tag	msg
-	sprintf_s(outputBuf, LOG_BUF_SIZE, "[%04d/%02d/%02d|%02d:%02d:%02d:%03d|%d|%d|%s] %s %s \r\n",
-				lt.wYear, lt.wMonth, lt.wDay, lt.wHour, lt.wMinute, lt.wSecond, lt.wMilliseconds,
-                GetCurrentProcessId(),
-				GetCurrentThreadId(),
-				levelStr[level],
-				tag,
-				buf);
+    //date time pid threadid level tag  msg
+    int size = snprintf(outputBuf, LOG_BUF_SIZE + 256, "%04d-%02d-%02d %02d:%02d:%02d:%03d %d|%d %s %s %s\r\n",
+                        lt.wYear, lt.wMonth, lt.wDay, lt.wHour, lt.wMinute, lt.wSecond, lt.wMilliseconds,
+                        GetCurrentProcessId(), GetCurrentThreadId(),
+                        tag, gLogLevelDes[level], buf);
 
-	OutputDebugString(outputBuf);
+    if (size <= 0)
+    {
+        return;
+    }
+
+    if (logMode & DLOG_CONSOLE)
+    {
+        // write log to console
+        OutputDebugStringA(outputBuf);
+    }
+
+    if (logMode & DLOG_FILE)
+    {
+        FILE *fp = fopen(LOG_FILE_FULL_NAME, "ab+");
+        if (fp == NULL)
+        {
+            return;
+        }
+        fwrite(outputBuf, size, 1, fp);
+        fclose(fp);
+    }
 }
 
-void DLog(DLogLevel level, const char* tag, const char* format, ...)
+extern "C" DEXPORT void DLogFlush()
 {
-	char buf[LOG_BUF_SIZE];
-
-	va_list ap;
-	va_start(ap, format);
-	vsnprintf_s(buf, LOG_BUF_SIZE, format, ap);
-	va_end(ap);
-
-	Output(level, tag, buf);
+    FILE *fp = fopen(LOG_FILE_FULL_NAME, "wb+");
+    if (fp == NULL)
+    {
+        return;
+    }
+    fclose(fp);
 }

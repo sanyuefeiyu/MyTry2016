@@ -3,8 +3,8 @@
 #include <unistd.h>
 #include <time.h>
 #include <android/log.h>
-#include "DLog.h"
 #include "DLogCommon.h"
+#include "DLog.h"
 
 #define LOG_FILE_FULL_NAME  "/sdcard/DLog.txt"
 
