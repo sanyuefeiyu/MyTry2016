@@ -10,12 +10,12 @@ extern "C" void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, c
 {
     char outputBuf[LOG_BUF_SIZE + 256];
 
-    //get date time
+    // get date time
     SYSTEMTIME  lt;
     GetLocalTime(&lt);
 
-    //date time pid threadid level tag  msg
-    int size = snprintf(outputBuf, LOG_BUF_SIZE + 256, "%04d-%02d-%02d %02d:%02d:%02d:%03d %d|%d [%s:%s] %s %s\r\n",
+    // date time pid tid level tag msg
+    int size = snprintf(outputBuf, LOG_BUF_SIZE + 256, "%04d-%02d-%02d %02d:%02d:%02d:%03d [%d|%d] [%s:%s] %s %s\r\n",
                         lt.wYear, lt.wMonth, lt.wDay, lt.wHour, lt.wMinute, lt.wSecond, lt.wMilliseconds,
                         GetCurrentProcessId(), GetCurrentThreadId(),
                         TAG_APP, tag, gLogLevelDes[level], buf);
