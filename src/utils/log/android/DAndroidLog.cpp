@@ -5,6 +5,7 @@
 #include <android/log.h>
 #include "DLogCommon.h"
 #include "DLog.h"
+#include "DFile.h"
 
 #define LOG_FILE_FULL_NAME  "/sdcard/DLog.txt"
 
@@ -46,10 +47,5 @@ void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, const char *
 
 void DLogFlush()
 {
-    FILE *fp = fopen(LOG_FILE_FULL_NAME, "wb+");
-    if (fp == NULL)
-    {
-        return;
-    }
-    fclose(fp);
+    DFileFlush(LOG_FILE_FULL_NAME);
 }

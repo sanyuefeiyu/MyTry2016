@@ -21,11 +21,13 @@ LOCAL_SRC_FILES := hello-jni.c \
                     test/common/test.cpp \
                     src/utils/log/DLog.cpp \
                     src/utils/log/android/DAndroidLog.cpp \
-                    src/utils/time/android/DAndroidTime.cpp
+                    src/utils/time/android/DAndroidTime.cpp \
+                    src/utils/file/DFile.cpp
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/src/base \
                     $(LOCAL_PATH)/src/utils/log \
-                    $(LOCAL_PATH)/src/utils/time
+                    $(LOCAL_PATH)/src/utils/time \
+                    $(LOCAL_PATH)/src/utils/file
 
 LOCAL_LDLIBS    := -llog
 

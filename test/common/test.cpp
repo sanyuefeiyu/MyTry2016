@@ -1,5 +1,8 @@
+#include <stdio.h>
+#include <string.h>
 #include "DLog.h"
 #include "DTime.h"
+#include "DFile.h"
 
 #define TAG "Main"
 
@@ -28,12 +31,28 @@ void TestTime()
     DLog(DLOG_D, TAG, "TestTime end");
 }
 
+void TestFile()
+{
+    DLog(DLOG_D, TAG, "TestFile begin");
+
+    const char *filePath = "d:\\testfile.xxx";
+    DFileFlush(filePath);
+
+    const char *buf = "hello world";
+    char outputBuf[2048];
+    snprintf(outputBuf, 2048, "%lld %s\r\n", DTimeGetTick(), buf);
+    DFileWrite2Dest(filePath, outputBuf, strlen(outputBuf));
+
+    DLog(DLOG_D, TAG, "TestFile end");
+}
+
 extern "C" void myTest()
 {
     DLog(DLOG_D, TAG, "myTest begin");
 
     TestLog();
     TestTime();
+    TestFile();
 
     DLog(DLOG_D, TAG, "myTest end");
 }

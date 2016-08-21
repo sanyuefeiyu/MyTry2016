@@ -7,6 +7,9 @@
     <Filter Include="time">
       <UniqueIdentifier>{58de07c2-b1f4-4d78-91f5-5c94f45e9c8c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="file">
+      <UniqueIdentifier>{4b92115b-018a-4083-be41-b0855eb119aa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\utils\log\DLog.cpp">
@@ -18,6 +21,9 @@
     <ClCompile Include="..\..\..\src\utils\time\win32\DWin32Time.cpp">
       <Filter>time</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\utils\file\DFile.cpp">
+      <Filter>file</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\src\utils\log\DLog.h">
@@ -28,6 +34,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\src\utils\time\DTime.h">
       <Filter>time</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\utils\file\DFile.h">
+      <Filter>file</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

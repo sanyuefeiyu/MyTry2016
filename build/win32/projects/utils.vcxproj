@@ -19,11 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\src\utils\file\DFile.cpp" />
     <ClCompile Include="..\..\..\src\utils\log\DLog.cpp" />
     <ClCompile Include="..\..\..\src\utils\log\win32\DWin32Log.cpp" />
     <ClCompile Include="..\..\..\src\utils\time\win32\DWin32Time.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\src\utils\file\DFile.h" />
     <ClInclude Include="..\..\..\src\utils\log\DLog.h" />
     <ClInclude Include="..\..\..\src\utils\log\DLogCommon.h" />
     <ClInclude Include="..\..\..\src\utils\time\DTime.h" />
@@ -98,7 +100,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;UTILS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)\..\..\..\src\base;$(ProjectDir)\..\..\..\src\utils\log;$(ProjectDir)\..\..\..\src\utils\time;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\..\..\..\src\base;$(ProjectDir)\..\..\..\src\utils\log;$(ProjectDir)\..\..\..\src\utils\time;$(ProjectDir)\..\..\..\src\utils\file;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -128,7 +130,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;UTILS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)\..\..\..\src\base;$(ProjectDir)\..\..\..\src\utils\log;$(ProjectDir)\..\..\..\src\utils\time;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\..\..\..\src\base;$(ProjectDir)\..\..\..\src\utils\log;$(ProjectDir)\..\..\..\src\utils\time;$(ProjectDir)\..\..\..\src\utils\file;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
