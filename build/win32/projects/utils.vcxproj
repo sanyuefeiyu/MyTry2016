@@ -21,10 +21,12 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\src\utils\log\DLog.cpp" />
     <ClCompile Include="..\..\..\src\utils\log\win32\DWin32Log.cpp" />
+    <ClCompile Include="..\..\..\src\utils\time\win32\DWin32Time.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\src\utils\log\DLog.h" />
     <ClInclude Include="..\..\..\src\utils\log\DLogCommon.h" />
+    <ClInclude Include="..\..\..\src\utils\time\DTime.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{41C5E42F-F1FB-4201-8FB0-C85A1D1FE2AF}</ProjectGuid>
@@ -96,11 +98,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;UTILS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)\..\..\..\src\base;$(ProjectDir)\..\..\..\src\utils\log;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\..\..\..\src\base;$(ProjectDir)\..\..\..\src\utils\log;$(ProjectDir)\..\..\..\src\utils\time;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -125,12 +128,14 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;UTILS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)\..\..\..\src\base;$(ProjectDir)\..\..\..\src\utils\log;$(ProjectDir)\..\..\..\src\utils\time;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

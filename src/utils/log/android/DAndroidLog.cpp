@@ -8,13 +8,13 @@
 
 #define LOG_FILE_FULL_NAME  "/sdcard/DLog.txt"
 
-extern "C" void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, const char *buf)
+void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, const char *buf)
 {
     struct timeval tv;
     struct timezone tz;
     gettimeofday(&tv, &tz);
-    time_t t = time(NULL);
-    tm tm2 = *localtime(&t);
+    time_t currTime = time(NULL);
+    tm tm2 = *localtime(&currTime);
 
     if (logMode & DLOG_CONSOLE)
     {
@@ -44,7 +44,7 @@ extern "C" void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, c
     }
 }
 
-extern "C" DEXPORT void DLogFlush()
+void DLogFlush()
 {
     FILE *fp = fopen(LOG_FILE_FULL_NAME, "wb+");
     if (fp == NULL)

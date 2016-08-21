@@ -6,7 +6,7 @@
 
 #define LOG_FILE_FULL_NAME  "D:\\DLog.txt"
 
-extern "C" void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, const char *buf)
+void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, const char *buf)
 {
     char outputBuf[LOG_BUF_SIZE + 256];
 
@@ -43,7 +43,7 @@ extern "C" void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, c
     }
 }
 
-extern "C" DEXPORT void DLogFlush()
+void DLogFlush()
 {
     FILE *fp = fopen(LOG_FILE_FULL_NAME, "wb+");
     if (fp == NULL)

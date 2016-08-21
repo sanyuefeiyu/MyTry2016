@@ -4,16 +4,16 @@
 #include "DLog.h"
 #include "DLogCommon.h"
 
-extern "C" void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, const char *buf);
+void DLogOutput(DLogMode logMode, DLogLevel level, const char *tag, const char *buf);
 
 static DLogMode gLogMode = DLOG_CONSOLE;
 
-DEXPORT void DLogOutputMode(DLogMode logMode)
+void DLogOutputMode(DLogMode logMode)
 {
     gLogMode = logMode;
 }
 
-DEXPORT void DLog(DLogLevel level, const char *tag, const char *format, ...)
+void DLog(DLogLevel level, const char *tag, const char *format, ...)
 {
     if (level < DLOG_D || level > DLOG_E || level < LOG_OUTPUT_LEVEL)
     {

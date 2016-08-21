@@ -1,4 +1,5 @@
 #include "DLog.h"
+#include "DTime.h"
 
 #define TAG "Main"
 
@@ -8,7 +9,7 @@ void TestLog()
 
     DLogOutputMode(DLogMode(DLOG_FILE | DLOG_CONSOLE));
 
-    DLog(DLOG_D, TAG, "TestLog begin");
+    DLog(DLOG_D, TAG, "TestLog begin, tick=%lld", DTimeGetTick());
 
     DLog(DLOG_D, TAG, "This is a debug message.");
     DLog(DLOG_I, TAG, "This is an info message.");
@@ -18,7 +19,7 @@ void TestLog()
     DLog((DLogLevel)-1, TAG, "This is min message.");
     DLog((DLogLevel)10, TAG, "This is max message.");
 
-    DLog(DLOG_D, TAG, "TestLog end");
+    DLog(DLOG_D, TAG, "TestLog end, tick=%lld", DTimeGetTick());
 }
 
 void TestTime()

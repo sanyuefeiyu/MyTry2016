@@ -18,12 +18,14 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE    := hello-jni
 LOCAL_SRC_FILES := hello-jni.c \
-                    test/test.cpp \
+                    test/common/test.cpp \
                     src/utils/log/DLog.cpp \
-                    src/utils/log/android/DAndroidLog.cpp
+                    src/utils/log/android/DAndroidLog.cpp \
+                    src/utils/time/android/DAndroidTime.cpp
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/src/base \
-                    $(LOCAL_PATH)/src/utils/log
+                    $(LOCAL_PATH)/src/utils/log \
+                    $(LOCAL_PATH)/src/utils/time
 
 LOCAL_LDLIBS    := -llog
 
