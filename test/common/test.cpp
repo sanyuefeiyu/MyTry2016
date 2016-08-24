@@ -3,6 +3,7 @@
 #include "DLog.h"
 #include "DTime.h"
 #include "DFile.h"
+#include "DMD5.h"
 
 #define TAG "Main"
 
@@ -46,6 +47,22 @@ void TestFile()
     DLog(DLOG_D, TAG, "TestFile end");
 }
 
+void TestMD5()
+{
+    unsigned char dst[17];
+    unsigned char src[128] = "hello world";
+    unsigned int len = strlen((char*)src);
+
+    for (size_t i = 0; i < len; i++)
+    {
+        dst[16] = '\0';
+        DMD5Sum(dst, src, i+1);
+        DLog(DLOG_D, TAG, "i=%02d, enc=%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%2x%02x%02x",
+            i, dst[0], dst[1], dst[2], dst[3], dst[4], dst[5], dst[6], dst[7], 
+            dst[8], dst[9], dst[10], dst[11], dst[12], dst[13], dst[14], dst[15]);
+    }
+}
+
 extern "C" void myTest()
 {
     DLog(DLOG_D, TAG, "myTest begin");
@@ -53,6 +70,7 @@ extern "C" void myTest()
     TestLog();
     TestTime();
     TestFile();
+    TestMD5();
 
     DLog(DLOG_D, TAG, "myTest end");
 }

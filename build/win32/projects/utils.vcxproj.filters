@@ -10,6 +10,15 @@
     <Filter Include="file">
       <UniqueIdentifier>{4b92115b-018a-4083-be41-b0855eb119aa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="safty">
+      <UniqueIdentifier>{cd0af4e3-62d9-47e6-b0da-f0f4a054fa7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="safty\md5">
+      <UniqueIdentifier>{f13df3ec-59d6-45cb-b0c0-eb923bbcf409}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="safty\md5\cifs">
+      <UniqueIdentifier>{31add22b-3ce2-40e3-8043-937d492a5c02}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\utils\log\DLog.cpp">
@@ -24,6 +33,15 @@
     <ClCompile Include="..\..\..\src\utils\file\DFile.cpp">
       <Filter>file</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\utils\safty\md5\cifs\MD5.c">
+      <Filter>safty\md5\cifs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\utils\safty\md5\cifs\cifs_block.c">
+      <Filter>safty\md5\cifs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\utils\safty\md5\DMD5.c">
+      <Filter>safty\md5</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\src\utils\log\DLog.h">
@@ -37,6 +55,30 @@
     </ClInclude>
     <ClInclude Include="..\..\..\src\utils\file\DFile.h">
       <Filter>file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\utils\safty\md5\cifs\auth_common.h">
+      <Filter>safty\md5\cifs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\utils\safty\md5\cifs\cifs_common.h">
+      <Filter>safty\md5\cifs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\utils\safty\md5\cifs\cifs_errors.h">
+      <Filter>safty\md5\cifs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\utils\safty\md5\cifs\cifs_system.h">
+      <Filter>safty\md5\cifs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\utils\safty\md5\cifs\cifs_typedefs.h">
+      <Filter>safty\md5\cifs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\utils\safty\md5\cifs\MD5.h">
+      <Filter>safty\md5\cifs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\utils\safty\md5\cifs\cifs_block.h">
+      <Filter>safty\md5\cifs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\utils\safty\md5\DMD5.h">
+      <Filter>safty\md5</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
