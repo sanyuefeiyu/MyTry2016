@@ -4,6 +4,10 @@
 #include "stdafx.h"
 #include "MyTry2016Test.h"
 
+#define _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+#include <crtdbg.h>
+
 #define MAX_LOADSTRING 100
 
 // 全局变量: 
@@ -103,6 +107,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
       CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
 
    myTest();
+
+    _CrtDumpMemoryLeaks();
 
    if (!hWnd)
    {
