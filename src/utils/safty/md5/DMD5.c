@@ -1,10 +1,12 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "./cifs/MD5.h"
+#include "DLog.h"
 #include "DMD5.h"
+#include "./cifs/MD5.h"
 
 #define MD5_BLOCK   64
 #define READ_SIZE   (2*1024)
+#define TAG "DMD5"
 
 struct DMD5Ctx
 {
@@ -72,12 +74,16 @@ void DMD5SumFile(unsigned char *dst, const char *filePath)
 
     FILE *fp = fopen(filePath, "rb");
     if (fp == NULL)
+    {
+        DLog(DLOG_W, TAG, "open file failed, filePath=%s", filePath);
         return;
+    }
     fseek(fp, 0, SEEK_END);
     fileSize = ftell(fp);
     fseek(fp, 0, SEEK_SET);
     if (fileSize <= 0)
     {
+        DLog(DLOG_W, TAG, "file size is 0, filePath=%s", filePath);
         fclose(fp);
         return;
     }

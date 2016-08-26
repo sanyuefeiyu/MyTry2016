@@ -22,12 +22,18 @@ LOCAL_SRC_FILES := hello-jni.c \
                     src/utils/log/DLog.cpp \
                     src/utils/log/android/DAndroidLog.cpp \
                     src/utils/time/android/DAndroidTime.cpp \
-                    src/utils/file/DFile.cpp
+                    src/utils/file/DFile.cpp \
+                    src/utils/safty/md5/DMD5.c \
+                    src/utils/safty/md5/cifs/md5.c \
+                    src/utils/safty/md5/cifs/cifs_block.c
 
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/src/base \
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/test/common/android \
+                    $(LOCAL_PATH)/src/base \
                     $(LOCAL_PATH)/src/utils/log \
                     $(LOCAL_PATH)/src/utils/time \
-                    $(LOCAL_PATH)/src/utils/file
+                    $(LOCAL_PATH)/src/utils/file \
+                    $(LOCAL_PATH)/src/utils/safty/md5 \
+                    $(LOCAL_PATH)/src/utils/safty/md5/cifs
 
 LOCAL_LDLIBS    := -llog
 
